@@ -1,9 +1,6 @@
 
 .DS_Store
 
-
-.idea/
-
-django_gb/__pycache__/
-
 mainapp/__pycache__/
+django_gb/__pycache__/
+.idea/
