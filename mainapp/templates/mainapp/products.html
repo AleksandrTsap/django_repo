@@ -9,7 +9,7 @@
         <div class="links clearfix">
             <ul class="links-menu">
                 {% for category in categories %}
-                    <li><a href="/products/{{ category.id }}">{{ category.name }}</a></li>
+                    <li><a href="#">{{ category.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -62,7 +62,7 @@
             <div class="related-products clearfix">
                 {% for product in products %}
                     <div class="block">
-                        <a href="/products/{{ product.id }}">
+                        <a href="#">
                             <img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
                             <div class="text">
                                 <h3>{{ product.category.name }}</h3>

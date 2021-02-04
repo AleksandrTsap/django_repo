@@ -9,7 +9,7 @@ def index(request):
     return render(request, 'mainapp/index.html', contex)
 
 
-def products(request, pk=None):
+def products(request):
     categories = ProductCategory.objects.all()
     products = Product.objects.all()[:3]
     product = Product.objects.all()[3]
@@ -17,7 +17,6 @@ def products(request, pk=None):
               'products': products,
               'product': product,
               'categories': categories, }
-    print(pk)
     return render(request, 'mainapp/products.html', contex)
 
 
