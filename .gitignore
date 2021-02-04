@@ -13,3 +13,5 @@ django_gb/__pycache__/
 
 mainapp/__pycache__/
 >>>>>>> gitignore
+
+mainapp/migrations/__pycache__/
