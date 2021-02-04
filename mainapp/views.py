@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import datetime
+from .models import ProductCategory, Product
 
 
 def index(request):
@@ -10,15 +10,13 @@ def index(request):
 
 
 def products(request):
-    menu = [{'category': 'все'},
-            {'category': 'дом'},
-            {'category': 'офис'},
-            {'category': 'модер'},
-            {'category': 'классика'}, ]
-    contex = {
-        'page_title': 'продукты',
-        'menu': menu,
-    }
+    categories = ProductCategory.objects.all()
+    products = Product.objects.all()[:3]
+    product = Product.objects.all()[3]
+    contex = {'page_title': 'продукты',
+              'products': products,
+              'product': product,
+              'categories': categories, }
     return render(request, 'mainapp/products.html', contex)
 
 
