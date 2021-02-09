@@ -1,11 +1,32 @@
 <div class="header clearfix">
-    <a href="{% url 'index' %} }}" class="logo"></a>
+    <a href="{% url 'basic:index' %} }}" class="logo"></a>
     <ul class="menu">
-        <li><a href="{% url 'index' %}">домой</a>
+        <li>
+            <a href="{% url 'basic:index' %}">
+                домой
+            </a>
         </li>
-        <li><a href="{% url 'products' %}" class='active'>продукты</a>
+        <li>
+            <a href="{% url 'basic:products' %}"
+               class='active'>
+                продукты</a>
         </li>
-        <li><a href="{% url 'contact' %}">контакты</a></li>
+        <li>
+            <a href="{% url 'basic:contact' %}">
+                контакты
+            </a>
+        </li>
+        <li>
+            {% if user.is_authenticated %}
+                <a href="{% url 'auth:logout' %}">
+                    выйти
+                </a>
+            {% else %}
+                <a href="{% url 'auth:login' %}">
+                    войти
+                </a>
+            {% endif %}
+        </li>
     </ul>
     <a href="#" class="search"></a>
     <a href="#" class="basket"></a>
