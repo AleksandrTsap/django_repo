@@ -20,6 +20,10 @@ def products(request):
     return render(request, 'mainapp/products.html', contex)
 
 
+def category(request, pk):
+    print(pk)
+
+
 def contact(request):
     locations = [
         {
