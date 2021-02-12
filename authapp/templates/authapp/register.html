@@ -1,0 +1,29 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block container %}
+    <div class="h2 text-center head">
+        {% if user.is_authenticated %}
+            Редактирование профиля
+        {% else %}
+            Регистрация
+        {% endif %}
+    </div>
+    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input class="form-control" type="submit" value="
+        {% if user.is_authenticated %}
+            сохранить
+        {% else %}
+            зарегистрироваться
+        {% endif %}
+        ">
+    </form>
+    <a href="{% url 'basic:index' %}"
+       class="btn btn-round form-control">
+        на главную
+    </a>
+
+{% endblock %}
