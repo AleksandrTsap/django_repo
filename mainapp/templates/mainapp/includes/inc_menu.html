@@ -2,17 +2,19 @@
     <a href="{% url 'basic:index' %} }}" class="logo"></a>
     <ul class="menu">
         <li>
-            <a href="{% url 'basic:index' %}">
+            <a href="{% url 'basic:index' %}"
+               class='{% if request.resolver_match.url_name == 'index' %}active{% endif %}'>
                 домой
             </a>
         </li>
         <li>
             <a href="{% url 'basic:products' %}"
-               class='active'>
+               class='{% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'category' %}active{% endif %}'>
                 продукты</a>
         </li>
         <li>
-            <a href="{% url 'basic:contact' %}">
+            <a href="{% url 'basic:contact' %}"
+               class='{% if request.resolver_match.url_name == 'contact' %}active{% endif %}'>
                 контакты
             </a>
         </li>
@@ -36,5 +38,9 @@
         </li>
     </ul>
     <a href="#" class="search"></a>
-    <a href="{% url 'basket:index' %}" class="basket"></a>
+    <a href="{% url 'basket:index' %}" class="basket">
+        {% if user.is_authenticated %}
+            <span>{{ user.basket_price|floatformat:0 }} руб ({{ user.basket_qty }} шт)</span>
+        {% endif %}
+    </a>
 </div>

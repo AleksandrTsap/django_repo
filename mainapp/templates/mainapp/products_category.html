@@ -17,7 +17,7 @@
                 <div class="related-products clearfix">
                     {% for product in products %}
                         <div class="block">
-                            <a href="{% url 'basket:add_to' product.pk %}">
+                            <a href="{% url 'basic:product_page' product.pk %}">
                                 <img src="/media/{{ product.image }}" alt="">
                                 <div class="text">
                                     <img src="/static/img/icon-hover.png" alt="img">

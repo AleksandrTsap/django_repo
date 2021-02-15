@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import render, get_object_or_404
 from .models import ProductCategory, Product
 
@@ -13,14 +15,34 @@ def index(request):
     return render(request, 'mainapp/index.html', contex)
 
 
+def get_hot_product():
+    product_ids = Product.objects.values_list('id', flat=True).all()
+    product_id = random.choice(product_ids)
+    return Product.objects.get(pk=product_id)
+
+
+def same_product(hot_product):
+    return Product.objects.filter(category=hot_product.category). \
+               exclude(pk=hot_product.pk)[:3]
+
+
 def products(request):
     products = Product.objects.all()[:3]
-    product = Product.objects.all()[3]
+    hot_product = get_hot_product()
     contex = {'page_title': 'продукты',
               'products': products,
-              'product': product,
+              'hot_product': hot_product,
+              'same_product': same_product(hot_product),
               'categories': get_menu(), }
     return render(request, 'mainapp/products.html', contex)
+
+
+def product_page(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    contex = {'page_title': 'страница товара',
+              'product': product,
+              'categories': get_menu(), }
+    return render(request, 'mainapp/product_page.html', contex)
 
 
 def category(request, pk):
