@@ -12,7 +12,10 @@ class ProductCategory(models.Model):
     class Meta:
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
-        # ordering = ['name']
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_active = False
+        self.save(using=using)
 
 
 class Product(models.Model):
