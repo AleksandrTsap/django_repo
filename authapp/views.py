@@ -1,4 +1,6 @@
-from django.contrib import auth
+from django.contrib import auth, messages
+from django.contrib.auth import get_user_model
+from django.contrib.messages import add_message
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -38,8 +40,16 @@ def register(request):
     if request.method == 'POST':
         form = ShopUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('auth:login'))
+            user = form.save(commit=False)
+            user.is_active = False
+            user.set_activation_key()
+            user.save()
+            if not user.send_confirm_email():
+                return HttpResponseRedirect(reverse('auth:register'))
+            messages.add_message(request, messages.INFO,
+                                 'Код активации отправлен на указанную Вами почту. '
+                                 'Пройдите по ссылке для активации учетной записи.')
+            return HttpResponseRedirect(reverse('auth:register'))
     else:
         form = ShopUserCreationForm()
 
@@ -64,3 +74,12 @@ def edit(request):
         'form': form,
     }
     return render(request, 'authapp/register.html', context)
+
+
+def verify(request, email, activation_key):
+    user = get_user_model().objects.filter(email=email).first()
+    if user.activation_key == activation_key and not user.is_activation_key_expired:
+        user.is_active = True
+        user.save()
+        auth.login(request, user)
+    return render(request, 'authapp/verification.html')

@@ -5,10 +5,6 @@ from django.shortcuts import render, get_object_or_404
 from .models import ProductCategory, Product
 
 
-def get_menu():
-    return ProductCategory.objects.all()
-
-
 def index(request):
     contex = {
         'page_title': 'главная',
@@ -34,7 +30,7 @@ def products(request):
               'products': products,
               'hot_product': hot_product,
               'same_product': same_product(hot_product),
-              'categories': get_menu(), }
+              }
     return render(request, 'mainapp/products.html', contex)
 
 
@@ -42,7 +38,7 @@ def product_page(request, pk):
     product = get_object_or_404(Product, pk=pk)
     contex = {'page_title': 'страница товара',
               'product': product,
-              'categories': get_menu(), }
+              }
     return render(request, 'mainapp/product_page.html', contex)
 
 
@@ -66,7 +62,7 @@ def category(request, pk):
     context = {'page_title': 'товары категории',
                'products': products,
                'category': category,
-               'categories': get_menu()}
+               }
 
     return render(request, 'mainapp/products_category.html', context)
 
