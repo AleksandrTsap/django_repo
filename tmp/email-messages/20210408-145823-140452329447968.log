@@ -1,0 +1,15 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0J/QvtC00YLQstC10YDQttC00LXQvdC40LUg0YPRh9C10YLQvdC+0Lkg0LfQsNC/?=
+ =?utf-8?b?0LjRgdC4IHJpdGE=?=
+From: django@geekshop.local
+To: rita@mailya.ru
+Date: Thu, 08 Apr 2021 11:58:23 -0000
+Message-ID: 
+ <161788310317.2249.8292633800570088847@1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa>
+
+Для подтверждения учетной записи rita на портале http://localhost:8000 перейдите по ссылке: 
+http://localhost:8000/auth/verify/rita@mailya.ru/51ddb309b0cd98f3fdd01966cc3c1de2aa5e4b0e/
+-------------------------------------------------------------------------------
