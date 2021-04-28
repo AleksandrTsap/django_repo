@@ -1,0 +1,15 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0J/QvtC00YLQstC10YDQttC00LXQvdC40LUg0YPRh9C10YLQvdC+0Lkg0LfQsNC/?=
+ =?utf-8?b?0LjRgdC4IEFsZXg=?=
+From: django@geekshop.local
+To: alex@mailya.ru
+Date: Thu, 08 Apr 2021 12:14:28 -0000
+Message-ID: 
+ <161788406830.2417.10664033193231232205@1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa>
+
+Для подтверждения учетной записи Alex на портале http://localhost:8000 перейдите по ссылке: 
+http://localhost:8000/auth/verify/alex@mailya.ru/d31dba8e6266249b05549238ec81c7f17216cd44/
+-------------------------------------------------------------------------------

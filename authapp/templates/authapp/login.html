@@ -10,13 +10,17 @@
         {{ form.as_p }}
         <br>
         {% if redirect_to %}
-        <input type="hidden" name="redirect-to" value="{{ redirect_to }}">
+            <input type="hidden" name="redirect-to" value="{{ redirect_to }}">
         {% endif %}
         <input class="form-control" type="submit" value="войти">
     </form>
     <a href="{% url 'auth:register' %}"
        class="btn btn-round form-control">
         зарегистрироваться
+    </a>
+    <a href="{% url 'social:begin' 'google-oauth2' %}?next=/"
+       class="btn btn-round form-control">
+        Google+
     </a>
 
 {% endblock %}
